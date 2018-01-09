@@ -1,6 +1,19 @@
 {
     "require": {
         "vlucas/phpdotenv": "^2.4",
-        "altorouter/altorouter": "^1.2"
+        "altorouter/altorouter": "^1.2",
+        "filp/whoops": "^2.1",
+        "philo/laravel-blade": "^3.1"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "App\\":"app"
+        }, 
+        "files": ["app/functions/helper.php"]
+    },
+
+    "config": {
+        "optimize-autoloader": true
     }
 }
