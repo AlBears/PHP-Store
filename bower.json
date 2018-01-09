@@ -1,0 +1,9 @@
+{
+  "name": "acmestore",
+  "dependencies": {
+    "foundation-sites": "6.3.1",
+    "jquery": "~2.2",
+    "motion-ui": "^1.2.3",
+    "slick-carousel": "^1.8.1"
+  }
+}
