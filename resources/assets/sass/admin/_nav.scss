@@ -1,0 +1,48 @@
+.nav{
+    background-color: #2A3F54;
+  
+    .menu > li > a{
+      color: #ffffff;
+      font-size: 1.2rem;
+  
+      &:hover, &:focus, &:active{
+        background-color: darken(#2A3F54, 8%);
+      }
+    }
+  
+    h3{
+      color: #ffffff;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+  
+    .image-holder{
+      padding: 0.7rem;
+      background-color: #E93F49;
+  
+      img{
+        border-radius: 50%;
+        border: 1px solid darken(#E93F49, 15%);
+        padding: 0.3rem;
+        height: 200px; width: 200px;
+      }
+  
+      p{
+        color: #ffffff;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .admin_title_bar{
+    .title-bar{
+      background-color: #EDEDED;
+  
+      .title-bar-title{
+        font-size: 1.5rem;
+        color: #0a0a0a;
+      }
+    }
+  }
+  
