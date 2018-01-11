@@ -26,7 +26,10 @@ elixir(function (mix) {
             //other dependencies
             bowerPath + '/slick-carousel/slick/slick.min.js',
 
-            'js/*.js'
+            'js/acme.js',
+            'js/admin/*.js',
+
+            'js/init.js'
             
         ], 'public/js/all.js', 'resources/assets');
 });
