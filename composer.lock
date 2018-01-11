@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0220291382a7f08cf61b111d45c68336",
-    "content-hash": "6e7e937d6829046297342249ce575a92",
+    "hash": "21b2ff3ba394ced61de4a78ae571b1c6",
+    "content-hash": "d6d6a8ffe1f1ebf408ba15352531ca9d",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1122,6 +1122,63 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "voku/pagination",
+            "version": "2.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voku/pagination.git",
+                "reference": "43a0c4316cd2e0123877d4e29e0e021b40857561"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voku/pagination/zipball/43a0c4316cd2e0123877d4e29e0e021b40857561",
+                "reference": "43a0c4316cd2e0123877d4e29e0e021b40857561",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "voku\\helper\\": "src/voku/helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Moelleken",
+                    "email": "lars@moelleken.org",
+                    "homepage": "http://www.moelleken.org/",
+                    "role": "Fork-Maintainer"
+                },
+                {
+                    "name": "David Carr",
+                    "email": "dave@daveismyname.com",
+                    "homepage": "http://www.daveismyname.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pagination, without a database dependency",
+            "keywords": [
+                "pager",
+                "pagination",
+                "paginator"
+            ],
+            "time": "2016-11-05 21:46:45"
         }
     ],
     "packages-dev": [],

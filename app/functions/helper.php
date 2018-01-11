@@ -1,6 +1,9 @@
 <?php
 
 use Philo\Blade\Blade;
+use voku\helper\Paginator;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Carbon\Carbon;
 
 function view($path, array $data = [])
 {
@@ -34,6 +37,19 @@ function slug($value){
     $value = preg_replace('!['.preg_quote('-').'\s]+!u', '-', $value);
     //remove whitespace
     return trim($value, '-');
+}
+
+function paginate($num_of_records, $total_record, $table_name, $object)
+{
+    $pages = new Paginator($num_of_records, 'p');
+    $pages->set_total($total_record);
+    
+    $data = Capsule::select("SELECT * FROM $table_name WHERE deleted_at is null
+                            ORDER BY created_at DESC " . $pages->get_limit());
+    
+    $categories = $object->transform($data);
+    
+    return [$categories, $pages->page_links()];
 }
 
 

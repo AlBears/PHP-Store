@@ -5,7 +5,9 @@
         "filp/whoops": "^2.1",
         "philo/laravel-blade": "^3.1",
         "illuminate/database": "^5.5",
-        "phpmailer/phpmailer": "^6.0"
+        "phpmailer/phpmailer": "^6.0",
+        "voku/pagination": "^2.1",
+        "nesbot/carbon": "^1.22"
     },
 
     "autoload": {
