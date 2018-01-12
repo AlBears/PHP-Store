@@ -7,6 +7,7 @@ use App\Classes\Session;
 use App\Classes\Redirect;
 use App\Classes\CSRFToken;
 use App\Classes\ValidateRequest;
+use App\Controllers\BaseController;
 
 class ProductCategoryController extends BaseController
 {
