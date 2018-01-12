@@ -1,35 +1,41 @@
 <?php
-
 namespace App\Controllers\Admin;
-use App\Models\Category;
+
+use App\Classes\CSRFToken;
+use App\Classes\Redirect;
 use App\Classes\Request;
 use App\Classes\Session;
-use App\Classes\Redirect;
-use App\Classes\CSRFToken;
 use App\Classes\ValidateRequest;
 use App\Controllers\BaseController;
+use App\Models\Category;
+use App\Models\SubCategory;
 
 class ProductCategoryController extends BaseController
 {
     public $table_name = 'categories';
     public $categories;
+    public $subcategories;
+    public $subcategories_links;
     public $links;
-
+    
     public function __construct()
     {
         $total = Category::all()->count();
+        $subTotal = SubCategory::all()->count();
         $object = new Category;
     
-        list($this->categories, $this->links) = paginate(3, $total, $this->table_name, $object);
+        list($this->categories, $this->links) = paginate(10, $total, $this->table_name, $object);
+        list($this->subcategories, $this->subcategories_links) = paginate(10, $subTotal, 'sub_categories', new SubCategory);
     }
-
+    
     public function show()
     {
         return view('admin/products/categories', [
-            'categories' => $this->categories, 'links' => $this->links
+            'categories' => $this->categories, 'links' => $this->links,
+            'subcategories' => $this->subcategories, 'subcategories_links' => $this->subcategories_links,
         ]);
     }
-
+    
     public function store()
     {
         if(Request::has('post')){
@@ -37,7 +43,7 @@ class ProductCategoryController extends BaseController
             
             if(CSRFToken::verifyCSRFToken($request->token)){
                 $rules = [
-                  'name' => ['required' => true, 'minLength' => 3, 'string' => true, 'unique' => 'categories']
+                  'name' => ['required' => true, 'minLength' => 3, 'mixed' => true, 'unique' => 'categories']
                 ];
                 
                 $validate = new ValidateRequest;
@@ -46,7 +52,8 @@ class ProductCategoryController extends BaseController
                 if($validate->hasError()){
                     $errors = $validate->getErrorMessages();
                     return view('admin/products/categories', [
-                        'categories' => $this->categories, 'links' => $this->links, 'errors' => $errors
+                        'categories' => $this->categories, 'links' => $this->links, 'errors' => $errors,
+                        'subcategories' => $this->subcategories, 'subcategories_links' => $this->subcategories_links,
                     ]);
                 }
                 //process form data
@@ -56,9 +63,12 @@ class ProductCategoryController extends BaseController
                 ]);
                 
                 $total = Category::all()->count();
-                list($this->categories, $this->links) = paginate(3, $total, $this->table_name, new Category);
+                $subTotal = SubCategory::all()->count();
+                list($this->categories, $this->links) = paginate(10, $total, $this->table_name, new Category);
+                list($this->subcategories, $this->subcategories_links) = paginate(10, $subTotal, 'sub_categories', new SubCategory);
                 return view('admin/products/categories', [
-                    'categories' => $this->categories, 'links' => $this->links, 'success' => 'Category Created'
+                    'categories' => $this->categories, 'links' => $this->links, 'success' => 'Category Created',
+                    'subcategories' => $this->subcategories, 'subcategories_links' => $this->subcategories_links,
                 ]);
             }
             throw new \Exception('Token mismatch');
@@ -66,7 +76,7 @@ class ProductCategoryController extends BaseController
         
         return null;
     }
-
+    
     public function edit($id)
     {
         if(Request::has('post')){
