@@ -167,10 +167,25 @@
                                             <div class="input-group">
                                                 <input type="text" id="item-subcategory-name-{{$subcategory['id']}}"
                                                        value="{{ $subcategory['name'] }}">
+        
+                                                <label>Change Category
+                                                    <select id="item-category-{{ $subcategory['category_id'] }}">
+                                                        @foreach(\App\Models\Category::all() as $category)
+                                                            @if($category->id == $subcategory['category_id'])
+                                                                <option selected="selected" value="{{ $category->id }}">
+                                                                    {{ $category->name }}
+                                                                </option>
+                                                            @endif
+                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </label>
+        
                                                 <div>
                                                     <input type="submit" class="button update-subcategory"
                                                            id="{{$subcategory['id']}}"
-                                                           name="token" data-token="{{ \App\Classes\CSRFToken::_token() }}"
+                                                           data-category-id="{{$subcategory['category_id']}}"
+                                                           data-token="{{ \App\Classes\CSRFToken::_token() }}"
                                                            value="Update">
                                                 </div>
                                             </div>
