@@ -23,7 +23,7 @@ class UploadFile
 
         $name = strtolower(str_replace(['-', ' '], '-', $name));
         $hash = md5(microtime());
-        $ext = $this->fileExtension();
+        $ext = $this->fileExtension($file);
 
         $this->filename = "{$name}-{$hash}.{$ext}";
     }
@@ -73,7 +73,7 @@ class UploadFile
      * @param [type] $new_filename
      * @return void
      */
-    public static function move($temp_path, $folder, $file, $new_filename)
+    public static function move($temp_path, $folder, $file, $new_filename = "")
     {
         $fileObj = new static;
         $ds = DIRECTORY_SEPARATOR;

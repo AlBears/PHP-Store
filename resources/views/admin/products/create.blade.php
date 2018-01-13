@@ -12,7 +12,7 @@
     
     @include('includes.message')
     
-    <form method="post" action="/admin/product/create">
+    <form method="post" action="/admin/product/create" enctype="multipart/form-data">
         <div class="small-12 medium-11">
             <div class="row expanded">
                 <div class="small-12 medium-6 column">
