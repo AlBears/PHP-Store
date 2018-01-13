@@ -123,5 +123,11 @@ class ProductController extends BaseController
         
         return null;
     }
-   
+    
+    public function getSubcategories($id)
+    {
+        $subcategories = SubCategory::where('category_id', $id)->get();
+        echo json_encode($subcategories);
+        exit;
+    }
 }
