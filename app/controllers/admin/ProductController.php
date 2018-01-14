@@ -24,8 +24,15 @@ class ProductController extends BaseController
     public function __construct()
     {
         $this->categories = Category::all();
-        //$total = Product::all()->count();
-        //list($this->products, $this->links) = paginate(10, $total, $this->table_name, new Product);
+        $total = Product::all()->count();
+        list($this->products, $this->links) = paginate(10, $total, $this->table_name, new Product);
+    }
+
+    public function show()
+    {
+        $products = $this->products;
+        $links = $this->links;
+        return view('admin/products/inventory', compact('products', 'links'));
     }
     
     public function showCreateProductForm()
