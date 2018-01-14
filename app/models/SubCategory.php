@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
 
 class SubCategory extends Model
 {
@@ -13,6 +15,16 @@ class SubCategory extends Model
     public $timestamps = true;
     protected $fillable = ["name", "slug", "category_id"];
     protected $dates = ["deleted_at"];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
     public function transform($data)
     {
