@@ -28,6 +28,7 @@ elixir(function (mix) {
 
             'js/acme.js',
             'js/admin/*.js',
+            'js/pages/*.js',
 
             'js/init.js'
             

@@ -6,7 +6,9 @@
 
         global: {},
 
-        admin: {}
+        admin: {},
+
+        homeslider: {}
     };
     
 })();
