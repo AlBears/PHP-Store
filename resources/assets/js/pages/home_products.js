@@ -6,16 +6,21 @@
             el:'#root',
             data: {
                 featured: [],
+                products: [],
                 loading: false
             },
             methods:{
                 getFeaturedProducts: function () {
                     this.loading = true;
-                    axios.get('/featured').then(function (response) {
-                        console.log(response.data);
-                        app.featured = response.data.featured;
+                    axios.all(
+                        [
+                        axios.get('/featured'), axios.get('/get-products')
+                        ] 
+                    ).then(axios.spread(function(featuredResponse, productsReasponse){
+                        app.featured = featuredResponse.data.featured;
+                        app.products = productsReasponse.data.products;
                         app.loading = false;
-                    });
+                    }));
                 },
                 stringLimit: function (string, value) {
                     if(string.length > value){
