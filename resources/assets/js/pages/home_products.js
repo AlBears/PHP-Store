@@ -21,7 +21,6 @@
                         app.featured = featuredResponse.data.featured;
                         app.products = productsResponse.data.products;
                         app.count = productsResponse.data.count;
-                        console.log(productsResponse);
                         app.loading = false;
                     }));
                 },

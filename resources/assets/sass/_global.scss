@@ -4,15 +4,42 @@ $heading-medium: 2rem;
 $heading-small: 1.7rem;
 $text-size: 1rem;
 
-html, body {
+html,body{
   font-size: $text-size;
   line-height: 1.5;
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Average', serif;
 }
 
-.site_wrapper {
+h2{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.6rem;
+  padding: 0 1rem 1rem 1rem;
+  font-weight: 500;
+
+  @include breakpoint(medium only){
+    font-size: 1.8rem;
+  }
+  @include breakpoint(large){
+    font-size: 2rem;
+  }
+}
+
+p{
+  font-family: 'Average', serif;
+  font-size: 1.2rem;
+  @include breakpoint(medium only){
+    font-size: 1rem;
+  }
+}
+
+[v-cloak] .v-cloak--hidden{
+  display: none;
+}
+
+.site_wrapper{
   min-height: 100%;
   position: relative;
 }
@@ -26,13 +53,6 @@ table{
     padding: 0;
     border: 1px solid #c0c0c0;
   }
-}
-
-h2{
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 0;
-  font-weight: 500;
 }
 
 hr{
