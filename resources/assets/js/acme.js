@@ -8,7 +8,9 @@
 
         admin: {},
 
-        homeslider: {}
+        homeslider: {},
+
+        product: {},
     };
     
 })();

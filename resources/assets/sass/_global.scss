@@ -38,6 +38,9 @@ p{
 [v-cloak] .v-cloak--hidden{
   display: none;
 }
+[v-cloak] {
+  display: none;
+}
 
 .site_wrapper{
   min-height: 100%;

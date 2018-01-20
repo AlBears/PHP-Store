@@ -12,6 +12,9 @@
                 ACMESTORE.homeslider.initCarousel();
                 ACMESTORE.homeslider.homePageProducts();
                 break;
+            case 'product':
+                ACMESTORE.product.details();
+                break;
             case 'adminProduct':
                 ACMESTORE.admin.changeEvent();
                 ACMESTORE.admin.delete();
