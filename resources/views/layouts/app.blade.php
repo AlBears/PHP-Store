@@ -9,6 +9,10 @@
 
     @yield('content')
 
+    <div class="notify">
+    
+    </div>
+
 </div>
 
 @yield('footer')

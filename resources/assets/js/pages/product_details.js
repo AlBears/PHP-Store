@@ -32,8 +32,10 @@
                     return ACMESTORE.module.truncateString(string, value);
                 },
                 addToCart: function(id) {
-                    var message = ACMESTORE.module.addItemToCart(id);
-                    alert(message);
+                    ACMESTORE.module.addItemToCart(id, function(message){
+                        $(".notify").css("display", 'block').delay(4000).slideUp(300)
+                        .html(message);
+                    });
                 }
             },
             created: function() {
