@@ -11,6 +11,8 @@
         homeslider: {},
 
         product: {},
+
+        module: {},
     };
     
 })();

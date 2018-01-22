@@ -29,11 +29,11 @@
 
                 },
                 stringLimit: function (string, value) {
-                    if(string.length > value){
-                        return string.substring(0, value) + '...';
-                    }else{
-                        return string;
-                    }
+                    return ACMESTORE.module.truncateString(string, value);
+                },
+                addToCart: function(id) {
+                    var message = ACMESTORE.module.addItemToCart(id);
+                    alert(message);
                 }
             },
             created: function() {
