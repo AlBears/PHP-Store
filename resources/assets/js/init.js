@@ -12,6 +12,9 @@
                 ACMESTORE.homeslider.initCarousel();
                 ACMESTORE.homeslider.homePageProducts();
                 break;
+            case 'cart':
+                ACMESTORE.product.cart();
+                break;
             case 'product':
                 ACMESTORE.product.details();
                 break;

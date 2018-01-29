@@ -48,7 +48,7 @@
                         <li><a href="#">Username</a> </li>
                         <li><a href="#">Sign In</a> </li>
                         <li><a href="#">Register</a> </li>
-                        <li><a href="#">Cart</a> </li>
+                        <li><a href="/cart">Cart</a> </li>
                     </ul>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                         <li>Username</li>
                         <li><a href="#">Sign In</a> </li>
                         <li><a href="#">Register</a> </li>
-                        <li><a href="#">Cart</a> </li>
+                        <li><a href="/cart">Cart</a> </li>
                     </ul>
                 </div>
             </div>
