@@ -29,6 +29,10 @@
                             }
                         })
                     }, 2000);
+                },
+
+                updateQuantity: function(product_id, operator) {
+                    console.log(operator, product_id);
                 }
             },
 
