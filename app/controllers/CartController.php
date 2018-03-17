@@ -70,9 +70,47 @@ class CartController extends BaseController
             $cartTotal = number_format($cartTotal, 2);
             echo json_encode(['items' => $result, 'cartTotal' => $cartTotal]);
             exit;
-
         } catch (\Exception $ex) {
             //log this to DB or email admin
+        }
+    }
+
+    public function updateQuantity()
+    {
+        if (Request::has('post')) {
+            $request = Request::get('post');
+            if (!$request->product_id) {
+                throw new \Exception('Malicious Activity');
+            }
+
+            $index = 0;
+            $quantity = '';
+            foreach ($_SESSION['user_cart'] as $cart_items) {
+                $index++;
+
+                foreach ($cart_items as $key => $value) {
+                    if ($key == 'product_id' && $value == $request->product_id) {
+                        switch ($request->operator) {
+                            case '+':
+                                $quantity = $cart_items['quantity'] + 1;
+                                break;
+                            case '-':
+                                $quantity = $cart_items['quantity'] - 1;
+                                if ($quantity < 1) {
+                                    $quantity = 1;
+                                }
+                                break;
+                        }
+
+                        array_splice($_SESSION['user_cart'], $index - 1, 1, array(
+                            [
+                                'product_id' => $request->product_id,
+                                'quantity' => $quantity
+                            ]
+                            ));
+                    }
+                }
+            }
         }
     }
 }

@@ -47,10 +47,11 @@
                                     <td>@{{ item.price }}</td>
                                     <td>
                                         @{{ item.quantity }}
-                                        <button @click="updateQuantity(item.id, '+')" style="cursor: pointer; color:#00AA00;">
+                                        <button v-if="item.stock > item.quantity" @click="updateQuantity(item.id, '+')" style="cursor: pointer; color:#00AA00;">
                                             <i class="fa fa-plus-square" aria-hidden="true"></i>
                                         </button>
-                                        <button @click="updateQuantity(item.id, '-')" style="cursor: pointer; color: #ff8000;">
+                                        <button v-if="item.quantity > 1" @click="updateQuantity(item.id, '-')" 
+                                                style="cursor: pointer; color: #ff8000;">
                                             <i class="fa fa-minus-square" aria-hidden="true"></i>
                                         </button>
                                     </td>
