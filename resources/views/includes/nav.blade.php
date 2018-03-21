@@ -46,8 +46,8 @@
                 <div class="top-bar-right">
                     <ul class="dropdown menu vertical medium-horizontal">
                         <li><a href="#">Username</a> </li>
-                        <li><a href="#">Sign In</a> </li>
-                        <li><a href="#">Register</a> </li>
+                        <li><a href="/login">Sign In</a> </li>
+                        <li><a href="/register">Register</a> </li>
                         <li><a href="/cart">Cart</a> </li>
                     </ul>
                 </div>
@@ -96,8 +96,8 @@
                 <div class="top-bar-right">
                     <ul class="dropdown menu vertical medium-horizontal">
                         <li>Username</li>
-                        <li><a href="#">Sign In</a> </li>
-                        <li><a href="#">Register</a> </li>
+                        <li><a href="/login">Sign In</a> </li>
+                        <li><a href="/register">Register</a> </li>
                         <li><a href="/cart">Cart</a> </li>
                     </ul>
                 </div>
