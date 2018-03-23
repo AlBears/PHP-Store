@@ -3,7 +3,7 @@
 @section('data-page-id', 'auth')
 
 @section('content')
-    <div class="auth" id="auth" style="padding: 6rem;">
+    <div class="auth" id="auth">
         <section class="register_form">
             <div class="row">
                 <div class="small-12 medium-7 medium-centered">
