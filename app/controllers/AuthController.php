@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\User;
 use App\Models\Product;
 use App\Classes\Request;
+use App\Classes\Session;
+use App\Classes\Redirect;
 use App\Classes\CSRFToken;
 use App\Classes\ValidateRequest;
 
@@ -23,7 +25,6 @@ class AuthController extends BaseController
 
     public function register()
     {
-        var_dump($_POST);
         if(Request::has('post')) {
             $request = Request::get('post');
             if(CSRFToken::verifyCSRFToken($request->token)) {
@@ -66,7 +67,46 @@ class AuthController extends BaseController
 
     public function login()
     {
-        
+        if(Request::has('post')) {
+            $request = Request::get('post');
+            if(CSRFToken::verifyCSRFToken($request->token)) {
+                $rules = [
+                    'username' => ['required' => true],
+                    'password' => ['required' => true],
+                ];
+
+                $validate = new ValidateRequest;
+                $validate->abide($_POST, $rules);
+
+                if($validate->hasError()){
+                    $errors = $validate->getErrorMessages();
+                    return view('login', ['errors' => $errors]);
+                }
+
+                // Check if user is in db
+                $user = User::where('username', $request->username)
+                            ->orWhere('email', $request->username)->first();
+
+                if($user){
+                    
+                    if(!password_verify($request->password, $user->password)){
+                        Session::add('error', 'Incorrect Password');
+                        return view('login');
+                    } else {
+                        Session::add('SESSION_USER_ID', $user->id);
+                        Session::add('SESSION_USER_NAME', $user->username);
+                        Redirect::to('/');
+                    }
+                } else {
+
+                    Session::add('error', 'User not found, please try again');
+                    return view('login');
+                }
+                 
+            }
+            throw new \Exception('Token Mismatch');
+        }
+        return null; 
     }
 
 }
