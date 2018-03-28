@@ -45,10 +45,24 @@
                 </div>
                 <div class="top-bar-right">
                     <ul class="dropdown menu vertical medium-horizontal">
-                        <li><a href="#">Username</a> </li>
-                        <li><a href="/login">Sign In</a> </li>
-                        <li><a href="/register">Register</a> </li>
-                        <li><a href="/cart">Cart</a> </li>
+                        @if(isAuthenticated())
+                            <li><a href="">{{ user()->username }}</a></li>
+                            <li>
+                                <a href="/cart">
+                                    Cart &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li><a href="/logout">Logout</a> </li>
+                        @else
+
+                            <li><a href="/login">Sign In</a> </li>
+                            <li><a href="/register">Register</a> </li>
+                            <li>
+                                <a href="/cart">
+                                    Cart &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -102,7 +116,11 @@
                         @else
                             <li><a href="/login">Sign In</a> </li>
                             <li><a href="/register">Register</a> </li>
-                            <li><a href="/cart">Cart</a> </li>
+                            <li>
+                                <a href="/cart">
+                                    Cart &nbsp; <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a>
+                            </li>
                         @endif
                         
                     </ul>

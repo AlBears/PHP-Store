@@ -3,7 +3,7 @@
 @section('data-page-id', 'cart')
 
 @section('content')
-    <div v-cloak class="shopping_cart" id="shopping_cart" style="padding: 6rem;">
+    <div v-cloak class="shopping_cart" id="shopping_cart">
 
         <div class="text-center">
             <img v-show="loading" src="/images/loading.gif">

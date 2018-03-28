@@ -5,3 +5,5 @@ $router->map( 'POST', '/register', 'App\Controllers\AuthController@register', 'r
 
 $router->map( 'GET', '/login', 'App\Controllers\AuthController@showLoginForm', 'login');
 $router->map( 'POST', '/login', 'App\Controllers\AuthController@login', 'log_me_in');
+
+$router->map( 'GET', '/logout', 'App\Controllers\AuthController@logout', 'logout');
