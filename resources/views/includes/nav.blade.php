@@ -95,10 +95,16 @@
                 </div>
                 <div class="top-bar-right">
                     <ul class="dropdown menu vertical medium-horizontal">
-                        <li>Username</li>
-                        <li><a href="/login">Sign In</a> </li>
-                        <li><a href="/register">Register</a> </li>
-                        <li><a href="/cart">Cart</a> </li>
+                        @if(isAuthenticated())
+                            <li>{{ user()->username }}</li>
+                            <li><a href="/cart">Cart</a> </li>
+                            <li><a href="/logout">Logout</a> </li>
+                        @else
+                            <li><a href="/login">Sign In</a> </li>
+                            <li><a href="/register">Register</a> </li>
+                            <li><a href="/cart">Cart</a> </li>
+                        @endif
+                        
                     </ul>
                 </div>
             </div>

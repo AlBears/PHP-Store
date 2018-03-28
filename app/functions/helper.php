@@ -1,9 +1,11 @@
 <?php
 
+use Carbon\Carbon;
+use App\Models\User;
 use Philo\Blade\Blade;
+use App\Classes\Session;
 use voku\helper\Paginator;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Carbon\Carbon;
 
 function view($path, array $data = [])
 {
@@ -30,7 +32,8 @@ function make($filename, $data)
     return $content;
 }
 
-function slug($value){
+function slug($value)
+{
     //remove all characters not in this list: underscore | letters | numbers | whitespace
     $value = preg_replace('![^'.preg_quote('_').'\pL\pN\s]+!u', '', mb_strtolower($value));
     //replace underscore and whitespace with a dash -
@@ -52,4 +55,15 @@ function paginate($num_of_records, $total_record, $table_name, $object)
     return [$categories, $pages->page_links()];
 }
 
+function isAuthenticated()
+{
+    return Session::has('SESSION_USER_NAME') ? true : false;
+}
 
+function user()
+{
+    if (isAuthenticated()) {
+        return User::findOrFail(Session::get('SESSION_USER_ID'));
+    }
+    return false;
+}

@@ -13,6 +13,13 @@ use App\Classes\ValidateRequest;
 
 class AuthController extends BaseController
 {
+    public function __construct()
+    {
+        if(isAuthenticated()) {
+            Redirect::to('/');
+        }
+    }
+    
     public function showRegisterForm()
     {
         return view('register');
@@ -87,8 +94,7 @@ class AuthController extends BaseController
                 $user = User::where('username', $request->username)
                             ->orWhere('email', $request->username)->first();
 
-                if($user){
-                    
+                if($user){ 
                     if(!password_verify($request->password, $user->password)){
                         Session::add('error', 'Incorrect Password');
                         return view('login');
